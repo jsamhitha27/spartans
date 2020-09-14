@@ -1,7 +1,7 @@
 # How to check if a given number is a power of 2 
 n = int(input('Enter a number: '))
 if((n& n-1 )==0):
-    print(" is a pow of 2")
+    print(n," is a pow of 2")
 else:
-    print(" is not a pow of 2")
+    print(n," is not a pow of 2")
         
