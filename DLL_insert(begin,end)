@@ -1,0 +1,83 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node*prev;
+    struct node*link;
+};
+struct node* head;
+void insert_begin(int data);
+
+
+void insert_begin(int data)
+{
+    struct node*temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    temp->data= data;
+    temp->prev=NULL;
+    if(head==NULL)
+    {
+        head=temp;
+        temp->link=NULL;
+        return;
+    }
+    head->prev=temp;
+    temp->link=head;
+    head= temp;
+    
+}
+void insert_end(int data)
+{
+    struct node*temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    temp->data=data;
+    temp->link=NULL;
+    if(head==NULL)
+    {
+        temp->prev=NULL;
+        head=temp;
+        return;
+        
+    }
+    struct node*sam;
+    sam=head;
+    while(sam->link!=NULL)
+    {
+    
+        sam=sam->link;
+        
+    }
+    sam->link=temp;
+    temp->prev=sam;
+}
+void print_LL()
+{
+    struct node*sam;
+    sam= head;
+    while(sam->link!=NULL)
+    {
+        printf("%d \t",sam->data);
+        sam=sam->link;
+    }
+    printf(" %d \t",sam->data);
+}
+int main()
+{
+    int n,i,data;
+    head=NULL;
+    insert_begin(3);
+    insert_begin(4);
+    insert_begin(5);
+    /*printf("enter the number of nodes \t");
+    scanf("%d",&n);
+    for(i=1;i<=n;i++)
+    {
+        printf("enter the data of %d node",i);
+        scanf("%d",&data);
+        insert_begin(data);
+    }*/
+    insert_end(4);
+        
+    printf("the double linked list is:");
+    print_LL();
+}
